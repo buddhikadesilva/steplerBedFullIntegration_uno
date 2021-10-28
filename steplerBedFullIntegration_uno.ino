@@ -42,6 +42,30 @@ int nRelay2 = 43; // R
 int nLswitch = 46; //S up R
 int nRswitch = 47; //S down R
 
+
+int dirPinL = 22; // nozzle L
+int stepPinL = 23; // nozzle L
+int stepsPerRevolutionL = 5500;
+int sspeedL = 900;
+
+int dirPinTL = 26; //tap2 L
+int stepPinTL = 27; //tap2 L
+int stepsPerRevolutionTL = 2100;
+int sspeedTL = 450;
+
+int dirPinT2L = 24; //12 tap1 L
+int stepPinT2L = 25; //13 tap1 L
+int stepsPerRevolutionT2L = 2100;
+int sspeedT2L = 450;
+//800 for full cycle
+
+int nRelay1L = 30; // L
+int nRelay2L = 31; // L
+
+
+int nLswitchL = 28; //S up L
+int nRswitchL = 29; //S down L
+
 boolean start = false;
 boolean endm = false;
 
@@ -84,6 +108,30 @@ void setup() {
 
   digitalWrite(nRelay1, HIGH);
   digitalWrite(nRelay2, HIGH);
+
+
+    pinMode(stepPinL, OUTPUT);
+  pinMode(dirPinL, OUTPUT);
+
+  pinMode(stepPinTL, OUTPUT);
+  pinMode(dirPinTL, OUTPUT);
+  //
+  pinMode(stepPinT2L, OUTPUT);
+  pinMode(dirPinT2L, OUTPUT);
+  // Set the spinning direction CW/CCW:
+  digitalWrite(dirPinL, LOW);
+  digitalWrite(dirPinTL, LOW);
+  digitalWrite(dirPinT2L, LOW);
+  //high -> forward
+
+  //from nozzle solo
+  pinMode(nRelay1L, OUTPUT);
+  pinMode(nRelay2L, OUTPUT);
+  pinMode(nLswitchL, INPUT);
+  pinMode(nRswitchL, INPUT);
+
+  digitalWrite(nRelay1L, HIGH);
+  digitalWrite(nRelay2L, HIGH);
 }
 void loop() {
 
