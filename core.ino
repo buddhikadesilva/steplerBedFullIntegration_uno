@@ -1,4 +1,4 @@
-void core(){
+void core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2){
         if (x) {
         if (StepEndm1 == false) {
 
@@ -8,7 +8,7 @@ void core(){
           delay(2000);
 
           Serial.println("started piston - open");
-newPistonForward();/////////////////////////////////////////////////////////////////////////2
+newPistonForward(nLswitch,nRswitch);/////////////////////////////////////////////////////////////////////////2 //newPistonForward(int nLswitch,int nRswitch)
 Serial.println(" piston - opened");
 //          Serial.println("started piston - open");
 //          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution); // p o
@@ -22,7 +22,7 @@ Serial.println(" piston - opened");
 
           Serial.println(" tap2 - start to open");
         //  stepper(stepPinT2, dirPinT2, 1, sspeedT2, stepsPerRevolutionT2); //t o/////////////4
-        newNozzleUp();
+        newNozzleUp(stepPin,dirPin,sspeed,stepsPerRevolution);  //newNozzleUp(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
           Serial.println(" tap2 - open");
           delay(2000);
           StepEndm1 = true;
@@ -63,7 +63,7 @@ Serial.println(" piston - opened");
           Serial.println("Piston going to close");
           delay(2000);
 
-newPistonBack();////////////////////////////////////////////////////////////////////////////////6
+newPistonBack(nLswitch,nRswitch,nRelay1,nRelay2);/////////////newPistonBack(int nLswitch,int nRswitch,int nRelay1,int nRelay2){
           
 //          stepper(stepPin, dirPin, 0, sspeed, stepsPerRevolution); //p c
           Serial.println("Piston closed");
@@ -101,7 +101,7 @@ newPistonBack();////////////////////////////////////////////////////////////////
         delay(2000);
 if(endm1 ==true && endm2==false){
   // stepper(stepPinT2, dirPinT2, 0, sspeedT2, stepsPerRevolutionT2); //t2 c///////////////////////////8
-  newNozzleDown();
+  newNozzleDown(stepPin,dirPin,sspeed,stepsPerRevolution);//newNozzleDown(int stepPin,int dirPin, int sspeed,int stepsPerRevolution)
         Serial.println("Tap2 Closed.");
         endm2==true;
         x = false;

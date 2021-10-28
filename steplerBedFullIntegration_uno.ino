@@ -41,7 +41,7 @@ int nRelay2 = 43; // R
 
 int nLswitch = 46; //S up R
 int nRswitch = 47; //S down R
-
+////////////////////////////////////////////////////////////////////////////
 
 int dirPinL = 22; // nozzle L
 int stepPinL = 23; // nozzle L
@@ -65,7 +65,7 @@ int nRelay2L = 31; // L
 
 int nLswitchL = 28; //S up L
 int nRswitchL = 29; //S down L
-
+///////////////////////////////////////////////////////////////////////////////
 boolean start = false;
 boolean endm = false;
 
@@ -109,7 +109,7 @@ void setup() {
   digitalWrite(nRelay1, HIGH);
   digitalWrite(nRelay2, HIGH);
 
-
+//////////////////////////////////////////////////////////////////////
     pinMode(stepPinL, OUTPUT);
   pinMode(dirPinL, OUTPUT);
 
@@ -208,16 +208,16 @@ void loop() {
 
    if (Incoming_value == '7') {
 
-   n(1);
+   n(1,nRelay1,nRelay2);
   delay(1000);
-    n(3);
+    n(3,nRelay1,nRelay2);
   }
 
    if (Incoming_value == '8') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-    n(2);
+    n(2,nRelay1,nRelay2);
    delay(1000);
-     n(3);
+     n(3,nRelay1,nRelay2);
   }
 
 
@@ -238,7 +238,14 @@ void loop() {
      
     if (Incoming_value == '1') {
     //  delay(5000);
-core();
+core(stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,nLswitch,nRswitch,nRelay1,nRelay2); 
+// right side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2){
+    }
+
+        if (Incoming_value == '6') {
+    //  delay(5000);
+core(stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,nLswitchL,nRswitchL,nRelay1L,nRelay2L); 
+// left side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch)
     }
   }
 }

@@ -1,4 +1,4 @@
-void n(int dir) {
+void n(int dir,int nRelay1,int nRelay2) {
 //  count++;
   if (dir == 1) {
     digitalWrite(nRelay1, HIGH);// turn relay 1 ON
@@ -54,9 +54,9 @@ void checkp(int i){
                       }
                             if(kpd.key[i].kchar=='6'){
                               while(1){
-                                newNozzleUpNoDelay();
+                                newNozzleUpNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution);//newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
                                 delay(1000);
-                                newNozzleDownNoDelay();
+                                newNozzleDownNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution); //newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
                                 delay(2000);
                                 }
                     //   digitalWrite(32, LOW);
