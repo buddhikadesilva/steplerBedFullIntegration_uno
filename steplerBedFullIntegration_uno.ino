@@ -19,28 +19,28 @@ unsigned long loopCount;
 unsigned long startTime;
 String msg;
 
-int dirPin = 3;
-int stepPin = 2;
+int dirPin = 53; // nozzle R
+int stepPin = 52; // nozzle R
 int stepsPerRevolution = 5500;
 int sspeed = 900;
 
-int dirPinT = 6;
-int stepPinT = 7;
+int dirPinT = 48; //tap2 R
+int stepPinT = 49; //tap2 R
 int stepsPerRevolutionT = 2100;
 int sspeedT = 450;
 
-int dirPinT2 = 4; //12
-int stepPinT2 = 5; //13
+int dirPinT2 = 50; //12 tap1 R
+int stepPinT2 = 51; //13 tap1 R
 int stepsPerRevolutionT2 = 2100;
 int sspeedT2 = 450;
 //800 for full cycle
 
-int nRelay1 = 10;
-int nRelay2 = 11;
+int nRelay1 = 44; // R
+int nRelay2 = 43; // R
 
 
-int nLswitch = 8; //up
-int nRswitch = 9; //down
+int nLswitch = 46; //S up R
+int nRswitch = 47; //S down R
 
 boolean start = false;
 boolean endm = false;
