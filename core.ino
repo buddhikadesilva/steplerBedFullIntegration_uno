@@ -8,7 +8,7 @@ void core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepP
           delay(2000);
 
           Serial.println("started piston - open");
-newPistonForward(nLswitch,nRswitch);/////////////////////////////////////////////////////////////////////////2 //newPistonForward(int nLswitch,int nRswitch)
+newPistonForward(nLswitch,nRswitch,nRelay1,nRelay2);/////////////////////////////////////////////////////////////////////////2 //newPistonForward(int nLswitch,int nRswitch)
 Serial.println(" piston - opened");
 //          Serial.println("started piston - open");
 //          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution); // p o

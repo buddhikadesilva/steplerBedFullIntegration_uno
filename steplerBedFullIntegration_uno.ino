@@ -132,6 +132,8 @@ void setup() {
 
   digitalWrite(nRelay1L, HIGH);
   digitalWrite(nRelay2L, HIGH);
+
+    pinMode(13, OUTPUT);
 }
 void loop() {
 
@@ -200,23 +202,25 @@ void loop() {
     Serial.print(Incoming_value); //Print Value of Incoming_value in Serial monitor
     Serial.print("\n"); //New line
      if (Incoming_value == '2') {
-       stepper(stepPin, dirPin, 0, sspeed, 5500); // p o
+       digitalWrite(13,HIGH);
+       stepper(stepPin, dirPin, 0, sspeed, 100); // p o
       }
  if (Incoming_value == '3') {
-   stepper(stepPin, dirPin, 1, sspeed, 5500); // p o
+     digitalWrite(13,LOW);
+   stepper(stepPin, dirPin, 1, sspeed, 100); // p o
   }
 
    if (Incoming_value == '7') {
 
    n(1,nRelay1,nRelay2);
-  delay(1000);
+  delay(500);
     n(3,nRelay1,nRelay2);
   }
 
    if (Incoming_value == '8') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
     n(2,nRelay1,nRelay2);
-   delay(1000);
+   delay(500);
      n(3,nRelay1,nRelay2);
   }
 
@@ -230,6 +234,63 @@ void loop() {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
     stepper(stepPinT, dirPinT, 1, sspeedT, 100);
   }
+
+
+       if (Incoming_value == 'f') {
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+     stepper(stepPinT2, dirPinT2, 0, sspeedT2, 100);
+  }
+
+     if (Incoming_value == 'g') {
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+    stepper(stepPinT2, dirPinT2, 1, sspeedT2, 100);
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////////
+     if (Incoming_value == 'p') { //2
+       stepper(stepPinL, dirPinL, 0, sspeedL, 100); // p o
+      }
+ if (Incoming_value == 'q') { //3
+   stepper(stepPinL, dirPinL, 1, sspeedL, 100); // p o
+  }
+
+   if (Incoming_value == 'r') { //7
+
+   n(1,nRelay1L,nRelay2L);
+  delay(500);
+    n(3,nRelay1L,nRelay2L);
+  }
+
+   if (Incoming_value == 's') { //8
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+    n(2,nRelay1L,nRelay2L);
+   delay(500);
+     n(3,nRelay1L,nRelay2L);
+  }
+
+
+     if (Incoming_value == 't') { //4
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+     stepper(stepPinTL, dirPinTL, 0, sspeedTL, 100);
+  }
+
+     if (Incoming_value == 'u') { //5
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+    stepper(stepPinTL, dirPinTL, 1, sspeedTL, 100);
+  }
+
+
+       if (Incoming_value == 'v') { //f
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+     stepper(stepPinT2L, dirPinT2L, 0, sspeedT2L, 100);
+  }
+
+     if (Incoming_value == 'w') { //g
+   //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
+    stepper(stepPinT2L, dirPinT2L, 1, sspeedT2L, 100);
+  }
+
+  ////////////////////////////////
+
 
 
 

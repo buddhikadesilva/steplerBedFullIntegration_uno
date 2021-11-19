@@ -27,7 +27,7 @@ void checkp(int i){
                  //     digitalWrite(35, LOW);
                      //   stepper(stepPinTap1, dirPinTap1, 0, sspeed, 100);
                       x=true;
-                     core();
+                    // core();
                       }
                             if(kpd.key[i].kchar=='2'){
 //                              x=true;
