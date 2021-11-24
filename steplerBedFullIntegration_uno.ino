@@ -1,4 +1,4 @@
-#include <Keypad.h>
+ #include <Keypad.h>
 
 const byte ROWS = 4; //four rows
 const byte COLS = 4; //three columns
@@ -36,7 +36,7 @@ int sspeedT2 = 450;
 //800 for full cycle
 
 int nRelay1 = 44; // R
-int nRelay2 = 43; // R
+int nRelay2 = 45; // R
 
 
 int nLswitch = 46; //S up R
@@ -299,14 +299,17 @@ void loop() {
      
     if (Incoming_value == '1') {
     //  delay(5000);
-core(stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,nLswitch,nRswitch,nRelay1,nRelay2); 
+//core(stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,nLswitch,nRswitch,nRelay1,nRelay2); 
 // right side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2){
+  Serial.print("e");
     }
 
         if (Incoming_value == '6') {
-    //  delay(5000);
-core(stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,nLswitchL,nRswitchL,nRelay1L,nRelay2L); 
+    //  delay(5000); //tap maru una
+  core(stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
+//core(stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
 // left side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch)
+    Serial.print("e");
     }
   }
 }
@@ -323,4 +326,3 @@ void stepper(int stepPin, int dirPin, boolean dir, int sspeed, int stepsPerRevol
   delay(1000);
 
 }
-
