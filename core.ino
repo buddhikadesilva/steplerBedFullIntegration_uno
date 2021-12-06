@@ -1,4 +1,4 @@
-void core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2,int stepPin,int dirPin,int sspeed,int stepsPerRevolution){
+void core(int machine,int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2,int stepPin,int dirPin,int sspeed,int stepsPerRevolution){
         if (x) {
         if (StepEndm1 == false) {
 
@@ -31,7 +31,12 @@ newPistonForward(nLswitch,nRswitch,nRelay1,nRelay2);////////////////////////////
         if (StepEndm1 == true && endm == false) {
          // Serial.println(" Nozzle going to up");
        //   newNozzleUp();//////////////////////////////////////////////////////////////////////5
-       stepper(stepPinT2, dirPinT2, 0, sspeedT2, stepsPerRevolutionT2);
+       if(machine==1){
+  stepper(stepPinT2, dirPinT2, 0, sspeedT2, stepsPerRevolutionT2);
+       }else{
+           stepper(stepPinT2, dirPinT2, 1, sspeedT2, stepsPerRevolutionT2);
+       }
+     
         //  Serial.println(" Nozzle upped");
           endm = true;
 //          if (!digitalRead(nRswitch)) { //nL up
@@ -75,7 +80,12 @@ newPistonBack(nLswitch,nRswitch,nRelay1,nRelay2);/////////////newPistonBack(int 
   //Serial.println("visited nozzle Dowan Area");
     //Serial.println("visited nozzle Dowan Area");
     //      newNozzleDown();///////////////////////////////////////////////////////////////////////7
-    stepper(stepPinT2, dirPinT2, 1, sspeedT2, stepsPerRevolutionT2);
+    if(machine==1){
+  stepper(stepPinT2, dirPinT2, 1, sspeedT2, stepsPerRevolutionT2);
+    }else{
+  stepper(stepPinT2, dirPinT2, 0, sspeedT2, stepsPerRevolutionT2);
+    }
+  
           endm1 = true;
         
 //          if (!digitalRead(nLswitch)) {
@@ -104,7 +114,7 @@ if(endm1 ==true && endm2==false){
   newNozzleDown(stepPin,dirPin,sspeed,stepsPerRevolution);//newNozzleDown(int stepPin,int dirPin, int sspeed,int stepsPerRevolution)
         //Serial.println("Tap2 Closed.");
         endm2=true;
-        x = false;
+        x = true;
          start = false;
  endm = false;
 
