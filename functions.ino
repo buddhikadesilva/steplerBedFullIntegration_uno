@@ -3,20 +3,20 @@ void n(int dir,int nRelay1,int nRelay2) {
   if (dir == 1) {
     digitalWrite(nRelay1, HIGH);// turn relay 1 ON
     digitalWrite(nRelay2, LOW);// turn relay 2 OFF
-    Serial.println("Rotating in CCW");
+  //  Serial.println("Rotating in CCW");
   }
 
   if (dir == 2) {
     digitalWrite(nRelay1, LOW);// turn relay 1 ON
     digitalWrite(nRelay2, HIGH);// turn relay 2 OFF
-    Serial.println("Rotating in CW");
+  //  Serial.println("Rotating in CW");
   }
 
   if (dir == 3) {
     // count--;
     digitalWrite(nRelay1, HIGH);// turn relay 1 ON
     digitalWrite(nRelay2, HIGH);// turn relay 2 OFF
-    Serial.println("stop");
+   // Serial.println("stop");
   }
 
 }
@@ -47,7 +47,7 @@ void checkp(int i){
                      // stepper(stepPinPiston, dirPinPiston, 1, sspeed, 9800);
                       }
                             if(kpd.key[i].kchar=='5'){
-                              refresh();
+                            //  refresh();
                      ///  digitalWrite(30, LOW);
                     //  digitalWrite(31, LOW);
                      //  stepper(stepPinTap1, dirPinTap1, 0, sspeed, 100);

@@ -16,15 +16,15 @@ void newPistonBack(int nLswitch,int nRswitch,int nRelay1,int nRelay2){
  //Serial.println("visited nozzle Dowan Area");
           if (!digitalRead(nLswitch)) {
             start1 = true;
-            Serial.println(" piston back triggered");
+        //    Serial.println(" piston back triggered");
           }
 
           while (start1) {
-            Serial.println("looking for forward sensor..");
+           // Serial.println("looking for forward sensor..");
             n(1,nRelay1,nRelay2); // n(int dir,int nRelay1,int nRelay2)
 
             if (!digitalRead(nRswitch))  {
-              Serial.println("forward sensor Found..");
+            //  Serial.println("forward sensor Found..");
               n(3,nRelay1,nRelay2);
               start1 = false;
              // endm1 = true;
@@ -53,15 +53,15 @@ void newPistonBack(int nLswitch,int nRswitch,int nRelay1,int nRelay2){
   void newPistonForward(int nLswitch,int nRswitch,int nRelay1,int nRelay2){
             if (!digitalRead(nRswitch)) { //nL up
             start = true;
-            Serial.println(" nozzle sensor forward triggered");
+           // Serial.println(" nozzle sensor forward triggered");
           }
 
           while (start) {
-            Serial.println("looking for back sensor..");
+           // Serial.println("looking for back sensor..");
             n(2,nRelay1,nRelay2);
 
             if (!digitalRead(nLswitch)) { //nR down
-              Serial.println("Found back sensor..");
+            //  Serial.println("Found back sensor..");
               n(3,nRelay1,nRelay2);
               start = false;
              // endm = true;
