@@ -41,6 +41,12 @@ int nRelay2 = 45; // R
 
 int nLswitch = 46; //S up R
 int nRswitch = 47; //S down R
+
+//step enb pins
+
+int nozzleEnb = 43; //R
+int tap2Enb = 42; //tap1
+int tapEnb = 41; //tap2
 ////////////////////////////////////////////////////////////////////////////
 
 int dirPinL = 22; // nozzle L
@@ -65,6 +71,12 @@ int nRelay2L = 31; // L
 
 int nLswitchL = 28; //S up L
 int nRswitchL = 29; //S down L
+
+//stepL enb pins
+int nozzleEnbL = 32; //R
+int tap2EnbL = 33; //tap1
+int tapEnbL = 34; //tap2
+
 ///////////////////////////////////////////////////////////////////////////////
 boolean start = false;
 boolean endm = false;
@@ -92,12 +104,19 @@ void setup() {
     
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
+  pinMode(nozzleEnb, OUTPUT);
+   digitalWrite(nozzleEnb, HIGH);
+  
 
   pinMode(stepPinT, OUTPUT);
   pinMode(dirPinT, OUTPUT);
+    pinMode(tapEnb, OUTPUT);
+     digitalWrite(tapEnb, HIGH);
   //
   pinMode(stepPinT2, OUTPUT);
   pinMode(dirPinT2, OUTPUT);
+    pinMode(tap2Enb, OUTPUT);
+     digitalWrite(tap2Enb, HIGH);
   // Set the spinning direction CW/CCW:
   digitalWrite(dirPin, LOW);
   digitalWrite(dirPinT, LOW);
@@ -116,12 +135,18 @@ void setup() {
 //////////////////////////////////////////////////////////////////////
     pinMode(stepPinL, OUTPUT);
   pinMode(dirPinL, OUTPUT);
+    pinMode(nozzleEnbL, OUTPUT);
+   digitalWrite(nozzleEnbL, HIGH);
 
   pinMode(stepPinTL, OUTPUT);
   pinMode(dirPinTL, OUTPUT);
+      pinMode(tapEnbL, OUTPUT);
+     digitalWrite(tapEnbL, HIGH);
   //
   pinMode(stepPinT2L, OUTPUT);
   pinMode(dirPinT2L, OUTPUT);
+      pinMode(tap2EnbL, OUTPUT);
+     digitalWrite(tap2EnbL, HIGH);
   // Set the spinning direction CW/CCW:
   digitalWrite(dirPinL, LOW);
   digitalWrite(dirPinTL, LOW);
@@ -207,11 +232,11 @@ void loop() {
   //  Serial.print("\n"); //New line
      if (Incoming_value == '2') {
        digitalWrite(13,HIGH);
-       stepper(stepPin, dirPin, 0, sspeed, 100); // p o
+       stepper(stepPin, dirPin, 0, sspeed, 100,nozzleEnb); // p o
       }
  if (Incoming_value == '3') {
      digitalWrite(13,LOW);
-   stepper(stepPin, dirPin, 1, sspeed, 100); // p o
+   stepper(stepPin, dirPin, 1, sspeed, 100,nozzleEnb); // p o
   }
 
    if (Incoming_value == '7') {
@@ -231,30 +256,30 @@ void loop() {
 
      if (Incoming_value == '4') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-     stepper(stepPinT, dirPinT, 0, sspeedT, 100);
+     stepper(stepPinT, dirPinT, 0, sspeedT, 100,tapEnb);
   }
 
      if (Incoming_value == '5') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-    stepper(stepPinT, dirPinT, 1, sspeedT, 100);
+    stepper(stepPinT, dirPinT, 1, sspeedT, 100,tapEnb);
   }
 
 
        if (Incoming_value == 'f') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-     stepper(stepPinT2, dirPinT2, 0, sspeedT2, 100);
+     stepper(stepPinT2, dirPinT2, 0, sspeedT2, 100,tap2Enb);
   }
 
      if (Incoming_value == 'g') {
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-    stepper(stepPinT2, dirPinT2, 1, sspeedT2, 100);
+    stepper(stepPinT2, dirPinT2, 1, sspeedT2, 100,tap2Enb);
   }
   //////////////////////////////////////////////////////////////////////////////////////////////
      if (Incoming_value == 'p') { //2
-       stepper(stepPinL, dirPinL, 0, sspeedL, 100); // p o
+       stepper(stepPinL, dirPinL, 0, sspeedL, 100,nozzleEnbL); // p o
       }
  if (Incoming_value == 'q') { //3
-   stepper(stepPinL, dirPinL, 1, sspeedL, 100); // p o
+   stepper(stepPinL, dirPinL, 1, sspeedL, 100,nozzleEnbL); // p o
   }
 
    if (Incoming_value == 'r') { //7
@@ -274,23 +299,23 @@ void loop() {
 
      if (Incoming_value == 't') { //4
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-     stepper(stepPinTL, dirPinTL, 0, sspeedTL, 100);
+     stepper(stepPinTL, dirPinTL, 0, sspeedTL, 100,tapEnbL);
   }
 
      if (Incoming_value == 'u') { //5
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-    stepper(stepPinTL, dirPinTL, 1, sspeedTL, 100);
+    stepper(stepPinTL, dirPinTL, 1, sspeedTL, 100,tapEnbL);
   }
 
 
        if (Incoming_value == 'v') { //f
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-     stepper(stepPinT2L, dirPinT2L, 0, sspeedT2L, 100);
+     stepper(stepPinT2L, dirPinT2L, 0, sspeedT2L, 100,tap2EnbL);
   }
 
      if (Incoming_value == 'w') { //g
    //stepper(stepPin, dirPin, 1, sspeed, 200); // p o
-    stepper(stepPinT2L, dirPinT2L, 1, sspeedT2L, 100);
+    stepper(stepPinT2L, dirPinT2L, 1, sspeedT2L, 100,tap2EnbL);
   }
 
   ////////////////////////////////
@@ -303,7 +328,7 @@ void loop() {
      
     if (Incoming_value == '1') {
     //  delay(5000);
-    core(machineL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
+    core(machineL,nozzleEnbL,tap2EnbL,tapEnbL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
     
 //core(stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,nLswitch,nRswitch,nRelay1,nRelay2); 
 // right side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch,int nRelay1,int nRelay2){
@@ -313,28 +338,29 @@ void loop() {
         if (Incoming_value == '6') {
     //  delay(5000); //tap maru una
 //  core(stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
-core(machineL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
+core(machineL,nozzleEnbL,tap2EnbL,tapEnbL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
 delay(500);
-core(machineL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
+core(machineL,nozzleEnbL,tap2EnbL,tapEnbL,stepPinT2L,dirPinT2L,sspeedT2L,stepsPerRevolutionT2L,stepPinTL,dirPinTL,sspeedTL,stepsPerRevolutionTL,nLswitchL,nRswitchL,nRelay1L,nRelay2L,stepPinL,dirPinL,sspeedL,stepsPerRevolutionL); 
 // left side core(int stepPinT,int dirPinT,int sspeedT,int stepsPerRevolutionT,int stepPinT2,int dirPinT2,int sspeedT2,int stepsPerRevolutionT2,int nLswitch,int nRswitch)
     Serial.print("e");
     }
             if (Incoming_value == 'k') {
     //  delay(5000); //tap maru una
-  core(machineR,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
+  core(machineR,nozzleEnb,tap2Enb,tapEnb,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
     Serial.print("e");
     }
             if (Incoming_value == 'm') {
     //  delay(5000); //tap maru una
-  core(machineR,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
+  core(machineR,nozzleEnb,tap2Enb,tapEnb,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
   delay(500);
-  core(machineR,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
+  core(machineR,nozzleEnb,tap2Enb,tapEnb,stepPinT2,dirPinT2,sspeedT2,stepsPerRevolutionT2,stepPinT,dirPinT,sspeedT,stepsPerRevolutionT,nLswitch,nRswitch,nRelay1,nRelay2,stepPin,dirPin,sspeed,stepsPerRevolution); 
     Serial.print("e");
     }
   }
 }
 
-void stepper(int stepPin, int dirPin, boolean dir, int sspeed, int stepsPerRevolution) { //dir true ->forward
+void stepper(int stepPin, int dirPin, boolean dir, int sspeed, int stepsPerRevolution,int enb) { //dir true ->forward
+  digitalWrite(enb,LOW);
   digitalWrite(dirPin, dir);
   for (int i = 0; i < stepsPerRevolution; i++) {
     // These four lines result in 1 step:
@@ -343,6 +369,7 @@ void stepper(int stepPin, int dirPin, boolean dir, int sspeed, int stepsPerRevol
     digitalWrite(stepPin, LOW);
     delayMicroseconds(sspeed);
   }
-  delay(1000);
+   digitalWrite(enb,HIGH);
+  delay(100);
 
 }

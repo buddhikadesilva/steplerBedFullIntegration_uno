@@ -54,9 +54,9 @@ void checkp(int i){
                       }
                             if(kpd.key[i].kchar=='6'){
                               while(1){
-                                newNozzleUpNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution);//newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+                                newNozzleUpNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution,nozzleEnb);//newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
                                 delay(1000);
-                                newNozzleDownNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution); //newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+                                newNozzleDownNoDelay(stepPin,dirPin,sspeed,stepsPerRevolution,nozzleEnb); //newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
                                 delay(2000);
                                 }
                     //   digitalWrite(32, LOW);

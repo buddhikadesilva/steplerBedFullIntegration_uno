@@ -1,13 +1,13 @@
-void newNozzleUp(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+void newNozzleUp(int stepPin,int dirPin, int sspeed,int stepsPerRevolution,int nozzleEnb){
   //Serial.println("started piston - open");
-          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution); // p o
+          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution,nozzleEnb); // p o
        //   Serial.println(" piston - opened");
-          delay(2000);
+          delay(100);
   }
 
-  void newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+  void newNozzleUpNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution, int nozzleEnb){
   //Serial.println("started piston - open");
-          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution); // p o
+          stepper(stepPin, dirPin, 1, sspeed, stepsPerRevolution,nozzleEnb); // p o
        //   Serial.println(" piston - opened");
         //  delay(2000);
   }
@@ -34,18 +34,18 @@ void newPistonBack(int nLswitch,int nRswitch,int nRelay1,int nRelay2){
           }
   }
 
-  void newNozzleDown(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+  void newNozzleDown(int stepPin,int dirPin, int sspeed,int stepsPerRevolution,int nozzleEnb){
       // Serial.println("Piston going to close");
-          delay(2000);
-          stepper(stepPin, dirPin, 0, sspeed, stepsPerRevolution); //p c
+          delay(100);
+          stepper(stepPin, dirPin, 0, sspeed, stepsPerRevolution,nozzleEnb); //p c
       //    Serial.println("Piston closed");
-          delay(2000);
+          delay(100);
   }
 
-    void newNozzleDownNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution){
+    void newNozzleDownNoDelay(int stepPin,int dirPin, int sspeed,int stepsPerRevolution,int nozzleEnb){
       // Serial.println("Piston going to close");
          // delay(2000);
-          stepper(stepPin, dirPin, 0, sspeed, stepsPerRevolution); //p c
+          stepper(stepPin, dirPin, 0, sspeed, stepsPerRevolution,nozzleEnb); //p c
       //    Serial.println("Piston closed");
          // delay(2000);
   }
