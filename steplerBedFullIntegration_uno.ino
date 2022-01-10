@@ -73,7 +73,7 @@ int nLswitchL = 28; //S up L
 int nRswitchL = 29; //S down L
 
 //stepL enb pins
-int nozzleEnbL = 32; //R
+int nozzleEnbL = 32; //L
 int tap2EnbL = 33; //tap1
 int tapEnbL = 34; //tap2
 

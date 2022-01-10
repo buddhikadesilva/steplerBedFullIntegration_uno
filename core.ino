@@ -2,7 +2,11 @@ void core(int machine,int nozzleEnb, int tapEnb,int tap2Enb, int stepPinT,int di
         if (x) {
         if (StepEndm1 == false) {
          // Serial.println("started tap1 open");
+               if(machine==1){
           stepper(stepPinT, dirPinT, 0, sspeedT, stepsPerRevolutionT,tapEnb); //t o///////////////1
+            }else{
+          stepper(stepPinT, dirPinT, 1, sspeedT, stepsPerRevolutionT,tapEnb);
+     }
       //    Serial.println(" tap1 - opened");
           delay(100);
 
@@ -15,7 +19,11 @@ newPistonForward(nLswitch,nRswitch,nRelay1,nRelay2);////////////////////////////
           delay(100);
 
           //Serial.println(" tap1 - start to close");
+                  if(machine==1){
           stepper(stepPinT, dirPinT, 1, sspeedT, stepsPerRevolutionT,tapEnb); //t c////////////////3
+                  }else{
+          stepper(stepPinT, dirPinT, 0, sspeedT, stepsPerRevolutionT,tapEnb); //t c////////////////3
+                  }
           //Serial.println(" tap1 - closed");
           delay(100);
 
